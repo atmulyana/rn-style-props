@@ -2,7 +2,7 @@
 
 This package is intended for React Native apps. It contains the constants and the functions to check the type of style props:
 [*layout*](https://reactnative.dev/docs/layout-props),
-[*transform*](#),
+[*transform*](https://reactnative.dev/docs/transforms),
 [*shadow*](https://reactnative.dev/docs/shadow-props),
 [*view*](https://reactnative.dev/docs/view-style-props),
 [*text*](https://reactnative.dev/docs/text-style-props) or
