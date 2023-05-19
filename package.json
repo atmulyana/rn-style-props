@@ -1,6 +1,6 @@
 {
   "name": "rn-style-props",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "to get react-native style prop types",
   "main": "index.js",
   "peerDependencies": {

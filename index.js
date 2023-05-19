@@ -193,35 +193,39 @@ export const isTextStyleValidProp = propName => isViewStyleValidProp(propName) |
 export const isImageStyleValidProp = propName => isViewStyleValidProp(propName) || isImageStyleProp(propName);
 
 export const extractTextStyle = (style, paddingForText = false, attrName='style') => {
-    const textStyle = {}, viewStyle = {};
+    const text = {}, view = {}, unknown = {};
     style = StyleSheet.flatten(style);
     for (let propName in style) {
-        if (!isTextStyleValidProp(propName))
-            throw `${propName} is not valid property for ${attrName}`;
-        if (isTextStyleProp(propName) || paddingForText && propName.indexOf('padding') > -1) {
-            textStyle[propName] = style[propName];
+        if (!isTextStyleValidProp(propName)) {
+            console.warn(`${propName} is not valid property for ${attrName}`);
+            unknown[propName] = style[propName];
+        }
+        else if (isTextStyleProp(propName) || paddingForText && propName.indexOf('padding') > -1) {
+            text[propName] = style[propName];
         }
         else {
-            viewStyle[propName] = style[propName];
+            view[propName] = style[propName];
         }
     }
-    return {view: viewStyle, text: textStyle};
+    return {view, text, unknown};
 };
 
 export const extractImageStyle = (style, attrName='style') => {
-    const imageStyle = {}, viewStyle = {};
+    const image = {}, view = {}, unknown = {};
     style = StyleSheet.flatten(style);
     for (let propName in style) {
-        if (!isImageStyleValidProp(propName))
-            throw `${propName} is not valid property for ${attrName}`;
-        if (isImageStyleProp(propName)) {
-            imageStyle[propName] = style[propName];
+        if (!isImageStyleValidProp(propName)) {
+            console.warn(`${propName} is not valid property for ${attrName}`);
+            unknown[propName] = style[propName];
+        }
+        else if (isImageStyleProp(propName)) {
+            image[propName] = style[propName];
         }
         else {
-            viewStyle[propName] = style[propName];
+            view[propName] = style[propName];
         }
     }
-    return {view: viewStyle, image: imageStyle};
+    return {view, image, unknown};
 };
 
 export default {
