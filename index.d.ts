@@ -4,6 +4,12 @@
  */
 type Arr = ReadonlyArray<string>;
 type Obj = Readonly<{[prop: string]: any}>;
+type StyleProps = null
+| undefined
+| Obj
+| false
+| ''
+| ReadonlyArray<StyleProps>;
 
 declare export const layoutStyleProps: Arr;
 declare export const transformStyleProps: Arr;
@@ -23,13 +29,13 @@ declare export function isViewStyleValidProp(propName: string): boolean;
 declare export function isTextStyleValidProp(propName: string): boolean;
 declare export function isImageStyleValidProp(propName: string): boolean;
 
-declare export function extractTextStyle(style: Obj, paddingForText?: boolean, attrName?: string): {
+declare export function extractTextStyle(style: StyleProps, paddingForText?: boolean, attrName?: string): {
     view: Obj,
     text: Obj,
     unknown: Obj,
 };
 
-declare export function extractImageStyle(style: Obj, attrName?: string): {
+declare export function extractImageStyle(style: StyleProps, attrName?: string): {
     view: Obj,
     image: Obj,
     unknown: Obj,
