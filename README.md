@@ -41,11 +41,11 @@ This package is intended for React Native apps. It contains the constants and th
          
 - `extractTextStyle`    
   If you have an object containing a set of style props for a `Text` component, this function will separate all style
-  props whose *text* type. This function returns an object which has two properties:
+  props whose *text* type. This function returns an object which has three properties:
   + `view` is an object containing all style props which are valid for `View` component.
-  + `text` is an object containing all style props whose *text* type.  
-     
-  This function throws an error if there is a not valid style prop for a `Text` component.
+  + `text` is an object containing all style props whose *text* type.
+  + `unknown` is an object containing all props excluded from the other properties. For each props included here, a
+     warning message is raised.
      
   **Usage:**    
   Suppose you create  a custom component:
@@ -87,8 +87,8 @@ This package is intended for React Native apps. It contains the constants and th
   + `style` is an object containing the style props to be extracted.
   + `paddingForText`: if it's `true` then all `padding` props will assigned to `text` property in
     the returned object. It may be useful if the contained component is `TextInput`. This parameter
-    has default value, that is `false`.
-
+    has default value, that is `false`.    
+     
 - `extractImageStyle`    
   It's like `extractTextStyle` but for `Image` component. The properties of the returned object are
-  `view` and `image`.
+  `view`, `image` and `unknown`.

@@ -180,12 +180,12 @@ export const viewStyleProps = Object.keys(viewStyle);
 export const textStyleProps = Object.keys(textStyle);
 export const imageStyleProps = Object.keys(imageStyle);
 
-export const isLayoutStyleProp = propName => layoutStyle[propName];
-export const isTransformStyleProp = propName => transformStyle[propName];
-export const isShadowStyleProp = propName => shadowStyle[propName];
-export const isViewStyleProp = propName => viewStyle[propName];
-export const isTextStyleProp = propName => textStyle[propName];
-export const isImageStyleProp = propName => imageStyle[propName];
+export const isLayoutStyleProp = propName => layoutStyle[propName] || false;
+export const isTransformStyleProp = propName => transformStyle[propName] || false;
+export const isShadowStyleProp = propName => shadowStyle[propName] || false;
+export const isViewStyleProp = propName => viewStyle[propName] || false;
+export const isTextStyleProp = propName => textStyle[propName] || false;
+export const isImageStyleProp = propName => imageStyle[propName] || false;
 
 export const isViewStyleValidProp = propName =>
     isLayoutStyleProp(propName) || isTransformStyleProp(propName) || isShadowStyleProp(propName) || isViewStyleProp(propName);
