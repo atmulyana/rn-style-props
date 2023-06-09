@@ -3,16 +3,17 @@
  * @format
  * @flow strict
  */
+//import type {ImageStyle, TextStyle, ViewStyle} from 'react-native/Libraries/StyleSheet/StyleSheet';
+//type Prop<T> = $ReadOnly<Partial<T>>;
 type Arr = $ReadOnlyArray<string>;
 type Obj = $ReadOnly<{...}>;
 type StyleProps =
-| null
-| void
-| Obj
-| false
-| ''
-| $ReadOnlyArray<StyleProps>;
-
+    | null
+    | void
+    | Obj
+    | false
+    | ''
+    | $ReadOnlyArray<StyleProps>;
 
 declare export const layoutStyleProps: Arr;
 declare export const transformStyleProps: Arr;
@@ -33,12 +34,16 @@ declare export function isTextStyleValidProp(propName: string): boolean;
 declare export function isImageStyleValidProp(propName: string): boolean;
 
 declare export function extractTextStyle(style: StyleProps, paddingForText?: boolean, attrName?: string): {
+    // view: Prop<ViewStyle>,
+    // text: Prop<TextStyle>,
     view: Obj,
     text: Obj,
     unknown: Obj,
 };
 
 declare export function extractImageStyle(style: StyleProps, attrName?: string): {
+    // view: Prop<ViewStyle>,
+    // image: Prop<ImageStyle>,
     view: Obj,
     image: Obj,
     unknown: Obj,
